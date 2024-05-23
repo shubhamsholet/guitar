@@ -1,307 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guitar</title>
-  </head>
-  <style>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guitar</title>
+</head>
+<style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  #line {
+    color: #a9774e;
+    padding: 0px;
+    position: absolute;
+    top: 0;
+  }
+
+  #linesecond {
+    color: #a9774e;
+    padding: 0px;
+    position: absolute;
+    top: 50%;
+  }
+
+  #linethird {
+    color: #a9774e;
+    padding: 0px;
+    position: absolute;
+    bottom: -17px;
+  }
+
+  /* ----------- */
+
+  .GitarAreaStart {
+    height: fit-content;
+    width: fit-content;
+    transform: rotate(-90deg);
+  }
+
+  .guitarArea {
+    width: fit-content;
+    position: relative;
+    width: 300px;
+    rotate: 20deg;
+  }
+
+  .guitarImg {
+    width: 100%;
+    height: auto;
+  }
+
+  .guitarsvgArea {
+    position: relative;
+  }
+
+  .guitarstrings {
+    position: absolute;
+    top: 68%;
+    right: 47%;
+    transform: rotate(90deg);
+  }
+
+  .audioBlock {
+    display: none;
+  }
+
+  .aboutGuitar {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .detals {
+    text-align: center;
+    width: 70%;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+
+  @media screen and (max-width:576px) {
+    .GitarAreaStart {
+      padding-left: 5rem;
+      rotate: 40deg;
+    }
+
+    .detals {
+      width: 100%;
+      line-height: 1;
+      padding-top: 17rem;
+    }
+
+    .detals h1,
+    .detals p {
+      padding: 1rem;
+    }
+
     html,
     body {
-      height: 100%;
-      width: 100%;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-       background-color: black; 
-      color: white;
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    #line {
-      color: #a9774e;
-      /* background-color: gray; */
-      padding: 0px;
-      position: absolute;
-      top: 0;
-    }
-
-    #linesecond {
-      color: #a9774e;
-      /* background-color: red; */
-      padding: 0px;
-      position: absolute;
-      top: 50%;
-    }
-
-    #linethird {
-      color: #a9774e;
-      /* background-color: blue; */
-      padding: 0px;
-      position: absolute;
-      bottom: -17px;
-    }
-
-    /* ----------- */
-
-    .GitarAreaStart {
-      padding-left: 15rem;
-    }
-
-    .guitarArea {
+      height: fit-content;
       width: fit-content;
-      position: relative;
-      width: 300px;
-      rotate: 20deg;
     }
+  }
+</style>
 
-    .guitarImg {
-      width: 100%;
-      height: auto;
-      transform: rotate(-90deg);
-    }
+<body>
 
-    .guitarsvgArea {
-      position: relative;
-    }
 
-    .guitarstrings {
-      position: absolute;
-      top: 46%;
-      right: 0;
-    }
-    .audioBlock {
-      display: none;
-    }
-  </style>
+  <div class="detals">
+    <h1>
+      Strum and Play: Experience the Interactive Guitar!</h1>
+    <p class="aboutGuitar">
+      I've crafted an interactive guitar using HTML, CSS, JavaScript, and GSAP. This virtual instrument lets you play
+      notes and features animated strings that respond to your strumming, offering a realistic touch. With smooth
+      animations and responsive design, it provides an engaging musical experience right in your browser. Click on the
+      strings or fretboard to create different melodies and chords. Dive in and enjoy the harmonious blend of technology
+      and music, bringing out the musician in you!
+    </p>
+  </div>
+  <div class="GitarAreaStart">
+    <div class="audioBlock">
+      <audio controls id="audio">
+        <source src="" type="audio/mp3/wav" />
+      </audio>
+      <audio controls id="secondaudio">
+        <source src="" type="audio/mp3/wav" />
+      </audio>
+      <audio controls id="thirdaudio">
+        <source src="" type="audio/mp3/wav" />
+      </audio>
+    </div>
+    <div class="guitarArea">
+      <img src="./Guitar.png" alt="" class="guitarImg" />
 
-  <body>
-    <div class="GitarAreaStart">
-      <div class="audioBlock">
-        <audio controls id="audio">
-          <source src="" type="audio/mp3/wav" />
-        </audio>
-        <audio controls id="secondaudio">
-          <source src="" type="audio/mp3/wav" />
-        </audio>
-        <audio controls id="thirdaudio">
-          <source src="" type="audio/mp3/wav" />
-        </audio>
-      </div>
-      <div class="guitarArea">
-        <img src="./Guitar.png" alt="" class="guitarImg" />
-
-        <div class="guitarstrings">
-          <div class="guitarsvgArea">
-            <svg id="line" width="114" height="20" class="text-center">
-              <path
-                d="M 0 10 Q 57 10 114 10"
-                stroke="#a9774e"
-                fill="transparent"
-              />
-            </svg>
-            <br />
-            <svg id="linesecond" width="114" height="20" class="text-center">
-              <path
-                d="M 0 10 Q 57 10 114 10"
-                stroke="#a9774e"
-                fill="transparent"
-              />
-            </svg>
-            <br />
-            <svg id="linethird" width="114" height="20" class="text-center">
-              <path
-                d="M 0 10 Q 57 10 114 10"
-                stroke="#a9774e"
-                fill="transparent"
-              />
-            </svg>
-          </div>
+      <div class="guitarstrings">
+        <div class="guitarsvgArea">
+          <svg id="line" width="114" height="20" class="text-center">
+            <path d="M 0 10 Q 57 10 114 10" stroke="#a9774e" fill="transparent" />
+          </svg>
+          <br />
+          <svg id="linesecond" width="114" height="20" class="text-center">
+            <path d="M 0 10 Q 57 10 114 10" stroke="#a9774e" fill="transparent" />
+          </svg>
+          <br />
+          <svg id="linethird" width="114" height="20" class="text-center">
+            <path d="M 0 10 Q 57 10 114 10" stroke="#a9774e" fill="transparent" />
+          </svg>
         </div>
       </div>
     </div>
+  </div>
 
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <!-- scrool trigger cdn  -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
-      integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
 
-    <script>
-      //--------------------------------------------
-      //--------------------------------------------
-      var initialpath = "M 0 10 Q 57 10 114 10";
-      var finalpath = "M 0 10 Q 57 10 114 10";
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- scrool trigger cdn  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+    integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-      var line = document.querySelector("#line");
+  <script>
+    //--------------------------------------------
+    //--------------------------------------------
+    var initialpath = "M 0 10 Q 57 10 114 10";
+    var finalpath = "M 0 10 Q 57 10 114 10";
 
-      line.addEventListener("mousemove", function (dots) {
-        console.log("dots", dots);
-        console.log("dots.x", dots.x);
-        console.log("dots.y", dots.y);
-        console.log("initialpath", initialpath);
+    var line = document.querySelector("#line");
 
-        // this is for check the details of the box , so that we can calculate its dimension
-        var firstoffsets = line.getBoundingClientRect();
-        console.log("firstoffsets", firstoffsets);
+    line.addEventListener("mousemove", function (dots) {
+      console.log("dots", dots);
+      console.log("dots.x", dots.x);
+      console.log("dots.y", dots.y);
+      console.log("initialpath", initialpath);
 
-        var firsttop = firstoffsets.top;
-        console.log("firsttop", firsttop);
+      // this is for check the details of the box , so that we can calculate its dimension
+      var firstoffsets = line.getBoundingClientRect();
+      console.log("firstoffsets", firstoffsets);
 
-        var firstleft = firstoffsets.left;
-        console.log("firstleft", firstleft);
+      var firsttop = firstoffsets.top;
+      console.log("firsttop", firsttop);
 
-        initialpath = `M 0 10 Q ${dots.x - firstleft} ${
-          dots.y - firsttop
+      var firstleft = firstoffsets.left;
+      console.log("firstleft", firstleft);
+
+      initialpath = `M 0 10 Q ${dots.x - firstleft} ${dots.y - firsttop
         }  114 10`;
 
-        console.log("initialpath", initialpath);
+      console.log("initialpath", initialpath);
 
-        gsap.to("#line path", {
-          attr: {
-            d: initialpath,
-          },
-        });
-
-        const audioTag = document.getElementById("audio");
-
-        audioTag.setAttribute("src", "./3r.wav");
-        console.log("audio", audioTag);
-
-        audioTag.play();
+      gsap.to("#line path", {
+        attr: {
+          d: initialpath,
+        },
       });
 
-      line.addEventListener("mouseleave", function () {
-        gsap.to("#line path", {
-          attr: {
-            d: finalpath,
-          },
-          ease: "elastic.out(1,0.3)",
-          duration: 2,
-        });
+      const audioTag = document.getElementById("audio");
+
+      audioTag.setAttribute("src", "./3r.wav");
+      console.log("audio", audioTag);
+
+      audioTag.play();
+    });
+
+    line.addEventListener("mouseleave", function () {
+      gsap.to("#line path", {
+        attr: {
+          d: finalpath,
+        },
+        ease: "elastic.out(1,0.3)",
+        duration: 2,
       });
+    });
 
-      //   ------------------------------------
-      //   ------------------------------------
-      var secondinitialpath = "M 0 10 Q 57 10 114 10";
-      var secondfinalpath = "M 0 10 Q 57 10 114 10";
+    //   ------------------------------------
+    //   ------------------------------------
+    var secondinitialpath = "M 0 10 Q 57 10 114 10";
+    var secondfinalpath = "M 0 10 Q 57 10 114 10";
 
-      var linesecond = document.querySelector("#linesecond");
+    var linesecond = document.querySelector("#linesecond");
 
-      linesecond.addEventListener("mousemove", function (dotsecond) {
-        console.log("dotsecond==", dotsecond);
-        console.log("dotsecond.x==", dotsecond.x);
-        console.log("dotsecond.y==", dotsecond.y);
-        console.log("dotsecond.offsety==", dotsecond.offsetY);
-        console.log("dotsecond.offsetX==", dotsecond.offsetX);
+    linesecond.addEventListener("mousemove", function (dotsecond) {
+      console.log("dotsecond==", dotsecond);
+      console.log("dotsecond.x==", dotsecond.x);
+      console.log("dotsecond.y==", dotsecond.y);
+      console.log("dotsecond.offsety==", dotsecond.offsetY);
+      console.log("dotsecond.offsetX==", dotsecond.offsetX);
 
-        // this is for check the details of the box , so that we can calculate its dimension
-        var secondoffsets = linesecond.getBoundingClientRect();
-        console.log("secondoffsets", secondoffsets);
+      // this is for check the details of the box , so that we can calculate its dimension
+      var secondoffsets = linesecond.getBoundingClientRect();
+      console.log("secondoffsets", secondoffsets);
 
-        var secondtop = secondoffsets.top;
-        var secondleft = secondoffsets.left;
+      var secondtop = secondoffsets.top;
+      var secondleft = secondoffsets.left;
 
-        console.log("secondtop", secondtop);
+      console.log("secondtop", secondtop);
 
-        secondinitialpath = `M 0 10 Q${dotsecond.x - secondleft} ${
-          dotsecond.y - secondtop
+      secondinitialpath = `M 0 10 Q${dotsecond.x - secondleft} ${dotsecond.y - secondtop
         }  114 10`;
 
-        console.log("secondinitialpath", secondinitialpath);
+      console.log("secondinitialpath", secondinitialpath);
 
-        gsap.to("#linesecond path", {
-          attr: {
-            d: secondinitialpath,
-          },
-        });
-
-        const SecondaudioTag = document.getElementById("secondaudio");
-
-        SecondaudioTag.setAttribute("src", "./1st.wav");
-        console.log("audio", SecondaudioTag);
-
-        SecondaudioTag.play();
+      gsap.to("#linesecond path", {
+        attr: {
+          d: secondinitialpath,
+        },
       });
 
-      linesecond.addEventListener("mouseleave", function () {
-        gsap.to("#linesecond path", {
-          attr: {
-            d: secondfinalpath,
-          },
-          ease: "elastic.out(1,0.3)",
-          duration: 2,
-        });
+      const SecondaudioTag = document.getElementById("secondaudio");
+
+      SecondaudioTag.setAttribute("src", "./1st.wav");
+      console.log("audio", SecondaudioTag);
+
+      SecondaudioTag.play();
+    });
+
+    linesecond.addEventListener("mouseleave", function () {
+      gsap.to("#linesecond path", {
+        attr: {
+          d: secondfinalpath,
+        },
+        ease: "elastic.out(1,0.3)",
+        duration: 2,
       });
+    });
 
-      //   ------------------------------------
-      //   ------------------------------------
+    //   ------------------------------------
+    //   ------------------------------------
 
-      var thirdinitialpath = "M 0 10 Q 57 10 114 10";
-      var thirdfinalpath = "M 0 10 Q 57 10 114 10";
+    var thirdinitialpath = "M 0 10 Q 57 10 114 10";
+    var thirdfinalpath = "M 0 10 Q 57 10 114 10";
 
-      var linethird = document.querySelector("#linethird");
+    var linethird = document.querySelector("#linethird");
 
-      linethird.addEventListener("mousemove", function (dotthird) {
-        console.log(dotthird);
-        console.log(dotthird.x);
-        console.log(dotthird.y, "dotthird.offsetY==", dotthird.offsetY);
+    linethird.addEventListener("mousemove", function (dotthird) {
+      console.log(dotthird);
+      console.log(dotthird.x);
+      console.log(dotthird.y, "dotthird.offsetY==", dotthird.offsetY);
 
-        // this is for check the details of the box , so that we can calculate its dimension
-        var thirdoffsets = linethird.getBoundingClientRect();
-        console.log("thirdoffsets", thirdoffsets);
+      // this is for check the details of the box , so that we can calculate its dimension
+      var thirdoffsets = linethird.getBoundingClientRect();
+      console.log("thirdoffsets", thirdoffsets);
 
-        var thirdtop = thirdoffsets.top;
-        console.log("thirdtop", thirdtop);
+      var thirdtop = thirdoffsets.top;
+      console.log("thirdtop", thirdtop);
 
-        var thirdleft = thirdoffsets.left;
-        console.log("thirdleft", thirdleft);
+      var thirdleft = thirdoffsets.left;
+      console.log("thirdleft", thirdleft);
 
-        thirdinitialpath = `M 0 10 Q${dotthird.x - thirdleft} ${
-          dotthird.y - thirdtop
+      thirdinitialpath = `M 0 10 Q${dotthird.x - thirdleft} ${dotthird.y - thirdtop
         }  114 10`;
 
-        console.log("thirdinitialpath", thirdinitialpath);
+      console.log("thirdinitialpath", thirdinitialpath);
 
-        gsap.to("#linethird path", {
-          attr: {
-            d: thirdinitialpath,
-          },
-        });
-
-        const thirdaudioTag = document.getElementById("thirdaudio");
-
-        thirdaudioTag.setAttribute("src", "./2nd.wav");
-        console.log("audio", thirdaudioTag);
-
-        thirdaudioTag.play();
+      gsap.to("#linethird path", {
+        attr: {
+          d: thirdinitialpath,
+        },
       });
 
-      linethird.addEventListener("mouseleave", function () {
-        gsap.to("#linethird path", {
-          attr: {
-            d: thirdfinalpath,
-          },
-          ease: "elastic.out(1,0.3)",
-          duration: 2,
-        });
+      const thirdaudioTag = document.getElementById("thirdaudio");
+
+      thirdaudioTag.setAttribute("src", "./2nd.wav");
+      console.log("audio", thirdaudioTag);
+
+      thirdaudioTag.play();
+    });
+
+    linethird.addEventListener("mouseleave", function () {
+      gsap.to("#linethird path", {
+        attr: {
+          d: thirdfinalpath,
+        },
+        ease: "elastic.out(1,0.3)",
+        duration: 2,
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>
