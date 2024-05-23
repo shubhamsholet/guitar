@@ -9,10 +9,8 @@
 <style>
   html,
   body {
-    height: fit-content;
-    width: fit-content;
-    max-width: 576px;
-    margin: auto;
+    height: 100%;
+    width: 100%;
   }
 
   * {
@@ -60,7 +58,7 @@
   .GitarAreaStart {
     height: fit-content;
     width: fit-content;
-    rotate: -5deg;
+    transform: rotate(-90deg);
   }
 
   .guitarArea {
@@ -97,10 +95,26 @@
 
   .detals {
     text-align: center;
-    width: 100%;
-    line-height: 1;
-    padding-top: 5rem;
+    width: 70%;
+    line-height: 1.5;
     font-size: 16px;
+  }
+
+  @media screen and (max-width:576px) {
+
+    html,
+    body {
+      height: fit-content;
+      width: fit-content;
+    }
+
+    .GitarAreaStart {
+      height: fit-content;
+      width: fit-content;
+      transform: rotate(-90deg);
+      padding-top: 16rem;
+      margin-top: -15rem;
+    }
   }
 </style>
 
